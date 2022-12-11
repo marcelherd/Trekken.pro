@@ -24,4 +24,7 @@ export const useStyles = createStyles((theme) => ({
       color: theme.colorScheme === "dark" ? theme.white : theme.black,
     },
   },
+  active: {
+    fontWeight: 700,
+  },
 }));

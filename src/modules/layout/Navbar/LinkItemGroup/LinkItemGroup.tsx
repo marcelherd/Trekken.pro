@@ -22,7 +22,10 @@ export const LinkItemGroup: React.FC<LinkItemGroupProps> = ({
   children,
 }) => {
   const router = useRouter();
+
   const shouldExpand = children?.some((link) => link.href === router.pathname);
+  const active = href === router.pathname || shouldExpand;
+
   const [expanded, setExpanded] = useState(
     (shouldExpand || initiallyExpanded) ?? false
   );
@@ -41,11 +44,12 @@ export const LinkItemGroup: React.FC<LinkItemGroupProps> = ({
           label={label}
           expanded={expanded}
           onClick={() => setExpanded((o) => !o)}
+          active={active}
         />
         <Collapse in={expanded}>{items}</Collapse>
       </>
     );
   }
 
-  return <LinkItem icon={icon} label={label} href={href} />;
+  return <LinkItem icon={icon} label={label} href={href} active={active} />;
 };

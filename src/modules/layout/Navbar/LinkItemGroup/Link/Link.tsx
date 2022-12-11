@@ -1,4 +1,5 @@
 import { Text } from "@mantine/core";
+import { useRouter } from "next/router";
 import { useStyles } from "./Link.styles";
 
 type Props = {
@@ -7,10 +8,18 @@ type Props = {
 };
 
 export const Link: React.FC<Props> = ({ label, href }) => {
-  const { classes } = useStyles();
+  const router = useRouter();
+  const { classes, cx } = useStyles();
+
+  const activeRoute = router.pathname === href;
 
   return (
-    <Text<"a"> component="a" className={classes.link} href={href} key={label}>
+    <Text<"a">
+      component="a"
+      className={cx(classes.link, { [classes.active]: activeRoute })}
+      href={href}
+      key={label}
+    >
       {label}
     </Text>
   );

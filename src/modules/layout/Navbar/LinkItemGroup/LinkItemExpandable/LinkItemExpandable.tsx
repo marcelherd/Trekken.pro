@@ -8,6 +8,7 @@ type Props = {
   label: string;
   expanded: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  active?: boolean;
 };
 
 export const LinkItemExpandable: React.FC<Props> = ({
@@ -15,8 +16,9 @@ export const LinkItemExpandable: React.FC<Props> = ({
   label,
   expanded,
   onClick,
+  active,
 }) => {
-  const { classes, theme } = useStyles();
+  const { classes, theme, cx } = useStyles();
 
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
 
@@ -24,10 +26,16 @@ export const LinkItemExpandable: React.FC<Props> = ({
     <UnstyledButton className={classes.control} onClick={onClick}>
       <Group position="apart">
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <ThemeIcon variant="light" size={30}>
+          <ThemeIcon
+            variant="light"
+            color={active ? "red" : undefined}
+            size={30}
+          >
             <Icon size={18} />
           </ThemeIcon>
-          <Box ml="md">{label}</Box>
+          <Box ml="md" className={cx({ [classes.active]: active })}>
+            {label}
+          </Box>
         </Box>
         <ChevronIcon
           className={classes.chevron}

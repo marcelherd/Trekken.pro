@@ -6,19 +6,31 @@ type Props = {
   icon: TablerIcon;
   label: string;
   href?: string;
+  active?: boolean;
 };
 
-export const LinkItem: React.FC<Props> = ({ icon: Icon, label, href }) => {
-  const { classes } = useStyles();
+export const LinkItem: React.FC<Props> = ({
+  icon: Icon,
+  label,
+  href,
+  active,
+}) => {
+  const { classes, cx } = useStyles();
 
   return (
     <UnstyledButton className={classes.control} component="a" href={href}>
       <Group position="apart" spacing={0}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <ThemeIcon variant="light" size={30}>
+          <ThemeIcon
+            variant="light"
+            color={active ? "red" : undefined}
+            size={30}
+          >
             <Icon size={18} />
           </ThemeIcon>
-          <Box ml="md">{label}</Box>
+          <Box ml="md" className={cx({ [classes.active]: active })}>
+            {label}
+          </Box>
         </Box>
       </Group>
     </UnstyledButton>

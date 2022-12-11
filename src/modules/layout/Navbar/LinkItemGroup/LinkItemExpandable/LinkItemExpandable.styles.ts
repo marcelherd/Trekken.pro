@@ -19,4 +19,7 @@ export const useStyles = createStyles((theme) => ({
   chevron: {
     transition: "transform 200ms ease",
   },
+  active: {
+    fontWeight: 700,
+  },
 }));
