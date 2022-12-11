@@ -4,6 +4,7 @@ import type { TablerIcon } from "@tabler/icons";
 import { LinkItem } from "./LinkItem/LinkItem";
 import { LinkItemExpandable } from "./LinkItemExpandable/";
 import { Link } from "./Link";
+import { useRouter } from "next/router";
 
 export type LinkItemGroupProps = {
   icon: TablerIcon;
@@ -20,7 +21,11 @@ export const LinkItemGroup: React.FC<LinkItemGroupProps> = ({
   initiallyExpanded,
   children,
 }) => {
-  const [expanded, setExpanded] = useState(initiallyExpanded ?? false);
+  const router = useRouter();
+  const shouldExpand = children?.some((link) => link.href === router.pathname);
+  const [expanded, setExpanded] = useState(
+    (shouldExpand || initiallyExpanded) ?? false
+  );
 
   const hasChildren = children && children.length > 0;
 
