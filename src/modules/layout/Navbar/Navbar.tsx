@@ -22,7 +22,7 @@ import { useSession } from "next-auth/react";
 
 const routes: LinkItemGroupProps[] = [
   { icon: IconGauge, label: "Dashboard", href: "/dashboard" },
-  { icon: IconUsers, label: "Characters", href: "/characters" },
+  { icon: IconUsers, label: "Characters", href: "/" },
   { icon: IconGauge, label: "Leaderboards", href: "/leaderboards" },
   { icon: IconBarbell, label: "Competitive", href: "/competitive" },
   { icon: IconDatabase, label: "Mods", href: "/mods" },
