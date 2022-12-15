@@ -1,9 +1,9 @@
-import { Title } from "@mantine/core";
-import { type NextPage } from "next";
 import Head from "next/head";
+import { type NextPageWithLayout } from "./_app";
+import { DashboardScreen } from "../modules/dashboard/DashboardScreen";
 import { Layout } from "../modules/layout";
 
-const Dashboard: NextPage = () => {
+const Dashboard: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -14,11 +14,11 @@ const Dashboard: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Title>Dashboard</Title>
-      </Layout>
+      <DashboardScreen />
     </>
   );
 };
+
+Dashboard.getLayout = (page) => <Layout requiresAuthentication>{page}</Layout>;
 
 export default Dashboard;

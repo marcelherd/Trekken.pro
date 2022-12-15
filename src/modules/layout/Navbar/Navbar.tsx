@@ -19,9 +19,15 @@ import type { LinkItemGroupProps } from "./LinkItemGroup";
 import { LinkItemGroup } from "./LinkItemGroup";
 import { UserSection } from "./UserSection";
 import { useSession } from "next-auth/react";
+import { Role } from "@prisma/client";
 
 const routes: LinkItemGroupProps[] = [
-  { icon: IconGauge, label: "Dashboard", href: "/dashboard" },
+  {
+    icon: IconGauge,
+    label: "Dashboard",
+    href: "/dashboard",
+    requiresAuthentication: true,
+  },
   { icon: IconUsers, label: "Characters", href: "/" },
   { icon: IconGauge, label: "Leaderboards", href: "/leaderboards" },
   { icon: IconBarbell, label: "Competitive", href: "/competitive" },
@@ -29,6 +35,7 @@ const routes: LinkItemGroupProps[] = [
   {
     icon: IconSettings,
     label: "Administration",
+    requiredRole: Role.ADMIN,
     children: [
       { label: "Manage Users", href: "/admin/users" },
       { label: "Manage Characters", href: "/admin/characters" },
