@@ -1,10 +1,4 @@
-import {
-  AppShell,
-  useMantineTheme,
-  Container,
-  LoadingOverlay,
-  Loader,
-} from "@mantine/core";
+import { AppShell, useMantineTheme, Container, Loader } from "@mantine/core";
 import { type Role } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
@@ -53,6 +47,7 @@ export const Layout: React.FC<Props> = ({
       navbarOffsetBreakpoint="sm"
       header={<Header open={open} toggleOpen={() => setOpen((o) => !o)} />}
       navbar={<Navbar open={open} toggleOpen={() => setOpen((o) => !o)} />}
+      footer={<Footer />}
     >
       <Container>{pageContent}</Container>
     </AppShell>

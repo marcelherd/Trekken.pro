@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
 
   return (
     <MantineFooter
-      height={60}
+      height={45}
       p="md"
       withBorder={false}
       styles={{
@@ -26,13 +26,13 @@ export const Footer: React.FC = () => {
     >
       <MediaQuery smallerThan="md" styles={{ display: "none" }}>
         <Flex gap="lg" justify="center">
-          <Anchor component={Link} href="/">
+          <Anchor component={Link} href="/privacy" size="xs" color="dimmed">
             Privacy Policy
           </Anchor>
-          <Anchor component={Link} href="/">
+          <Anchor component={Link} href="/terms" size="xs" color="dimmed">
             Terms of Use
           </Anchor>
-          <Anchor component={Link} href="/">
+          <Anchor component={Link} href="/feedback" size="xs" color="dimmed">
             Feedback
           </Anchor>
         </Flex>
