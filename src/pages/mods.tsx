@@ -1,9 +1,9 @@
 import { Title } from "@mantine/core";
-import { type NextPage } from "next";
 import Head from "next/head";
 import { Layout } from "../modules/layout";
+import { type NextPageWithLayout } from "./_app";
 
-const Mods: NextPage = () => {
+const Mods: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -14,11 +14,11 @@ const Mods: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Title>Mods</Title>
-      </Layout>
+      <Title order={2}>Mods</Title>
     </>
   );
 };
+
+Mods.getLayout = (page) => <Layout>{page}</Layout>;
 
 export default Mods;

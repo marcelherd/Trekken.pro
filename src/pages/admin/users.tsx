@@ -1,9 +1,10 @@
 import { Title } from "@mantine/core";
-import { type NextPage } from "next";
+import { Role } from "@prisma/client";
 import Head from "next/head";
 import { Layout } from "../../modules/layout";
+import { type NextPageWithLayout } from "../_app";
 
-const UsersAdmin: NextPage = () => {
+const UsersAdmin: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -14,11 +15,13 @@ const UsersAdmin: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Title>Admin - Users</Title>
-      </Layout>
+      <Title order={2}>Admin - Users</Title>
     </>
   );
 };
+
+UsersAdmin.getLayout = (page) => (
+  <Layout requiredRole={Role.ADMIN}>{page}</Layout>
+);
 
 export default UsersAdmin;

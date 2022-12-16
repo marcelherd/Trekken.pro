@@ -1,9 +1,9 @@
 import { Title } from "@mantine/core";
-import { type NextPage } from "next";
 import Head from "next/head";
 import { Layout } from "../modules/layout";
+import { type NextPageWithLayout } from "./_app";
 
-const Leaderboards: NextPage = () => {
+const Leaderboards: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -14,11 +14,11 @@ const Leaderboards: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Title>Leaderboards</Title>
-      </Layout>
+      <Title order={2}>Leaderboards</Title>
     </>
   );
 };
+
+Leaderboards.getLayout = (page) => <Layout>{page}</Layout>;
 
 export default Leaderboards;

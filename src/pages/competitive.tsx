@@ -1,9 +1,9 @@
 import { Title } from "@mantine/core";
-import { type NextPage } from "next";
 import Head from "next/head";
 import { Layout } from "../modules/layout";
+import { type NextPageWithLayout } from "./_app";
 
-const Competitive: NextPage = () => {
+const Competitive: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -14,11 +14,11 @@ const Competitive: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
-        <Title>Competitive</Title>
-      </Layout>
+      <Title order={2}>Competitive</Title>
     </>
   );
 };
+
+Competitive.getLayout = (page) => <Layout>{page}</Layout>;
 
 export default Competitive;
